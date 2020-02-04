@@ -14,12 +14,12 @@
     "blessed": "^0.1.81",
     "pretty-error": "^2.1.1",
     "ringbufferjs": "^1.1.0",
-    "split-string": "^6.1.0",
-    "standard": "^14.3.1"
+    "split-string": "^6.1.0"
   },
   "description": "A dashboard layout for single mineflayer bot.",
   "private": false,
   "devDependencies": {
-    "markdown-toc": "^1.2.0"
+    "markdown-toc": "^1.2.0",
+    "standard": "^14.3.1"
   }
 }
