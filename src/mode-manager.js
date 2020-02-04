@@ -28,7 +28,7 @@ module.exports = {
   },
 
   set mode (mode) {
-    if ('name' in mode) {
+    if (mode && typeof mode.name === 'string') {
       mode = mode.name
     }
 
