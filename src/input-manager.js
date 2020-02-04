@@ -9,7 +9,6 @@ const input = blessed.textbox({
   left: 7
 })
 
-let buffer = ''
 let cursor = 0
 
 input._listener = async function (ch, key) {
@@ -28,7 +27,7 @@ input._listener = async function (ch, key) {
     this.value = value.slice(0, cursor) + res
     return this.screen.render()
   } else if (mode.resetCompletion()) {
-    cursor = buffer.length
+    cursor = value.length
   }
 
   let handled = true
