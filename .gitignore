@@ -102,3 +102,16 @@ dist
 
 # TernJS port file
 .tern-port
+
+# lockfiles
+yarn.lock
+package-lock.json
+
+# Intellij stuff
+.idea/.gitignore
+.idea/codeStyles/
+.idea/jsLibraryMappings.xml
+.idea/mineflayer-ui.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
