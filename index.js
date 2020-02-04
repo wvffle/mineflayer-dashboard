@@ -23,16 +23,8 @@ module.exports = function (options) {
     // Register CHAT mode
     const chat = new Mode('chat', {
       bg: 'green',
-      async complete (string) {
-        return new Promise((resolve, reject) => {
-          bot.tabComplete(string, (err, matches) => {
-            if (err) {
-              return reject(err)
-            }
-
-            resolve((matches || []).map(k => k.slice(string.length - string.lastIndexOf(' ') - 1)))
-          }, false, false)
-        })
+      async completer (string) {
+        return bot.dashboard._minecraftCompleter(string)
       },
 
       interpreter (string) {
@@ -43,7 +35,7 @@ module.exports = function (options) {
     // Chat handler
     bot.on('message', message => {
       // TODO: Add option to change that
-      if (!/ » /.test(message.toString())) return
+      if (!bot.dashboard._chatPattern.test(message.toString())) return
       chat.println(` ${message.toAnsi()}{|}{gray-fg}${new Date().toLocaleString()}{/} `)
     })
 
@@ -54,7 +46,7 @@ module.exports = function (options) {
     // Register REPL mode
     const repl = new Mode('repl', {
       bg: 'red',
-      complete (string) {
+      completer (string) {
         let root = context
         let leftSide = ''
         let key = ''
@@ -102,10 +94,25 @@ module.exports = function (options) {
       bot.dashboard._ended = true
     })
 
+    const commands = require('./src/commands')(bot)
+
     bot.dashboard = {
       log,
       Mode,
-      _ended: false
+      commands,
+      _chatPattern: options.chatPattern || /^<\w+> /,
+      _ended: false,
+      _minecraftCompleter (string) {
+        return new Promise((resolve, reject) => {
+          bot.tabComplete(string, (err, matches) => {
+            if (err) {
+              return reject(err)
+            }
+
+            resolve((matches || []).map(k => k.slice(string.length - string.lastIndexOf(' ') - 1)))
+          }, false, false)
+        })
+      }
     }
 
     inputListen()

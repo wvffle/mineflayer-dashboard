@@ -5,6 +5,11 @@
   "repository": "https://github.com/wvffle/mineflayer-ui.git",
   "author": "Kasper Seweryn <github@wvffle.net>",
   "license": "MIT",
+  "scripts": {
+    "lint": "standard",
+    "fix": "standard --fix",
+    "prepublishOnly": "markdown-toc README.md -i"
+  },
   "dependencies": {
     "blessed": "^0.1.81",
     "pretty-error": "^2.1.1",
@@ -13,5 +18,8 @@
     "standard": "^14.3.1"
   },
   "description": "A dashboard layout for single mineflayer bot.",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "markdown-toc": "^1.2.0"
+  }
 }
