@@ -8,8 +8,7 @@
   "scripts": {
     "lint": "standard",
     "fix": "standard --fix",
-    "prepublishOnly": "markdown-toc README.md -i",
-    "postversion": "cat package.json | jq .version -r | xargs -I{} git tag {}"
+    "prepublishOnly": "markdown-toc README.md -i"
   },
   "dependencies": {
     "blessed": "^0.1.81",
