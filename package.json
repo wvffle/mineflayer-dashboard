@@ -1,6 +1,6 @@
 {
   "name": "mineflayer-dashboard",
-  "version": "1.0.0-alpha.1",
+  "version": "1.0.0-alpha.2",
   "main": "index.js",
   "repository": "https://github.com/wvffle/mineflayer-ui.git",
   "author": "Kasper Seweryn <github@wvffle.net>",
@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "standard",
     "fix": "standard --fix",
-    "prepublishOnly": "markdown-toc README.md -i"
+    "prepublishOnly": "markdown-toc README.md -i",
+    "postversion": "cat package.json | jq .version -r | xargs -I{} git tag {}"
   },
   "dependencies": {
     "blessed": "^0.1.81",
