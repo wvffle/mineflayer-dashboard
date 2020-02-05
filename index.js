@@ -43,7 +43,7 @@ module.exports = function (options = {}) {
 
     // Register REPL mode
     // eslint-disable-next-line
-    const repl = Mode('repl', {
+    const repl = new Mode('repl', {
       bg: 'red',
       completer (string) {
         let root = context
