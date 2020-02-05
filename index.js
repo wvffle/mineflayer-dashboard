@@ -34,7 +34,6 @@ module.exports = function (options = {}) {
 
     // Chat handler
     bot.on('message', message => {
-      // TODO: Add option to change that
       if (!bot.dashboard._chatPattern.test(message.toString())) return
       chat.println(` ${message.toAnsi()}{|}{gray-fg}${new Date().toLocaleString()}{/} `)
     })
@@ -96,11 +95,15 @@ module.exports = function (options = {}) {
 
     const commands = require('./src/commands')(bot)
 
+    const chatPattern = options.chatPattern
+      || (bot.chatPatterns && bot.chatPatterns.find(p => p.type === 'chat').pattern)
+      || /^<\w+> /
+
     bot.dashboard = {
       log,
       Mode,
       commands,
-      _chatPattern: options.chatPattern || /^<\w+> /,
+      _chatPattern: chatPattern,
       _ended: false,
       _minecraftCompleter (string) {
         return new Promise((resolve, reject) => {

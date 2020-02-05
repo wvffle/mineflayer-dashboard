@@ -38,7 +38,7 @@ npm install --save mineflayer-dashboard
 ## Initialization
 Then load up the plugin using mineflayer.
 You can pass `options` argument:
-- `chatPattern` - a pattern that is tested against a message to determine if it's chat message or a system message
+- `chatPattern` - a pattern that is tested against a message to determine if it's chat message or a system message. It's better to add this option as mineflayer's chat pattern will match messages like `[SkinsRestorer] Your skin has been changed.`. Also custom patterns are much faster than mineflayer's default one.
 ```js
 bot.loadPlugin(require('mineflayer-dashboard')({
   chatPattern: /^» \w+? » /
