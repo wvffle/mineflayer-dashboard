@@ -10,7 +10,7 @@ const modeBox = blessed.box({
 })
 
 const modes = {}
-let currentMode = undefined
+let currentMode
 
 const emitter = new EventEmitter()
 

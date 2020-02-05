@@ -12,6 +12,8 @@ const logBox = blessed.box({
   height: '100%-2',
   border: 'line',
   scrollable: true,
+  scrollbar: { bg: 'blue' },
+  mouse: true,
   tags: true
 })
 

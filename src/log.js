@@ -14,8 +14,6 @@ module.exports = function (...args) {
     }
 
     logBox.scrollTo(logBox.getScrollHeight())
-
-    // TODO: Check if required
     screen.render()
   }
 }

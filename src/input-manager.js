@@ -38,7 +38,7 @@ input._listener = async function (ch, key) {
         cursor = 0
       } else {
         // NOTE: run :exit command in this mode
-        mode.interprete(':exit')
+        await mode.interprete(':exit')
       }
       break
 

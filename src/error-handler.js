@@ -27,5 +27,3 @@ module.exports = function (bot) {
     screen.render()
   }
 }
-
-

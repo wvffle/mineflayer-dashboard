@@ -8,7 +8,6 @@ const modeManager = require('./src/mode-manager')
 const { inspect } = require('util')
 
 module.exports = function (options = {}) {
-
   // Check if user passed 'bot' as an options
   if (options._client) {
     return module.exports()(options)
@@ -95,9 +94,9 @@ module.exports = function (options = {}) {
 
     const commands = require('./src/commands')(bot)
 
-    const chatPattern = options.chatPattern
-      || (bot.chatPatterns && bot.chatPatterns.find(p => p.type === 'chat').pattern)
-      || /^<\w+> /
+    const chatPattern = options.chatPattern ||
+      (bot.chatPatterns && bot.chatPatterns.find(p => p.type === 'chat').pattern) ||
+      /^<\w+> /
 
     bot.dashboard = {
       log,
@@ -121,4 +120,3 @@ module.exports = function (options = {}) {
     inputListen()
   }
 }
-
