@@ -42,7 +42,8 @@ module.exports = function (options = {}) {
     vm.createContext(context)
 
     // Register REPL mode
-    const repl = new Mode('repl', {
+    // eslint-disable-next-line
+    const repl = Mode('repl', {
       bg: 'red',
       completer (string) {
         let root = context
@@ -53,7 +54,7 @@ module.exports = function (options = {}) {
           leftSide += c
 
           if (c === '.' || c === '[') {
-            if (!key in root) break
+            if (!(key in root)) break
             root = root[key]
             key = ''
           } else if (c !== ']') {

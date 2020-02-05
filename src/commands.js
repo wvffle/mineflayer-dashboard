@@ -1,5 +1,4 @@
 const modeManager = require('./mode-manager')
-const inputManager = require('./input-manager')
 const log = require('./log')
 
 module.exports = function (bot) {
@@ -17,11 +16,11 @@ module.exports = function (bot) {
   }
 
   for (const mode in modeManager.modes) {
-    commands[mode] = () => modeManager.mode = mode
+    commands[mode] = () => (modeManager.mode = mode)
   }
 
   modeManager.on('new', (mode) => {
-    commands[mode.name] = () => modeManager.mode = mode
+    commands[mode.name] = () => (modeManager.mode = mode)
   })
 
   return commands

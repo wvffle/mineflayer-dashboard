@@ -67,6 +67,7 @@ input._listener = async function (ch, key) {
   if (!handled) {
     handled = true
 
+    let prev
     switch (key.name) {
       case 'left':
         if (cursor - 1 >= 0) move(-1)
@@ -77,7 +78,7 @@ input._listener = async function (ch, key) {
         break
 
       case 'up':
-        const prev = mode.history.prev()
+        prev = mode.history.prev()
         if (!prev) break
 
         this.value = prev
@@ -102,6 +103,7 @@ input._listener = async function (ch, key) {
     }
   }
 
+  // eslint-disable-next-line
   if (!handled && !/^[\x00-\x08\x0b-\x0c\x0e-\x1f\x7f]$/.test(ch)) {
     this.value = value.slice(0, cursor) + ch + value.slice(cursor)
     cursor += 1
