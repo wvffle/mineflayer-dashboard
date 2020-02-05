@@ -7,7 +7,7 @@ const inputListen = require('./src/input-manager')
 const modeManager = require('./src/mode-manager')
 const { inspect } = require('util')
 
-module.exports = function (options) {
+module.exports = function (options = {}) {
 
   // Check if user passed 'bot' as an options
   if (options._client) {
