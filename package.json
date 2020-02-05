@@ -1,7 +1,7 @@
 {
   "name": "mineflayer-dashboard",
   "description": "A dashboard layout for single mineflayer bot.",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "main": "index.js",
   "repository": "https://github.com/wvffle/mineflayer-ui.git",
   "author": "Kasper Seweryn <github@wvffle.net>",
@@ -11,7 +11,6 @@
     "fix": "standard --fix",
     "readme": "markdown-toc README.md -i && git add README.md",
     "changelog": "auto-changelog -up && git add CHANGELOG.md",
-    "version": "changelog",
     "test": "exit 0"
   },
   "engines": {
