@@ -77,7 +77,10 @@ input._listener = async function (ch, key) {
         break
 
       case 'up':
-        this.value = mode.history.prev()
+        const prev = mode.history.prev()
+        if (!prev) break
+
+        this.value = prev
         cursor = this.value.length
         break
 
