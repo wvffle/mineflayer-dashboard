@@ -13,6 +13,7 @@ A dashboard layout for single mineflayer bot.
 - [Initialization](#initialization)
 - [Layout](#layout)
 - [Logging](#logging)
+  * [Error logging](#error-logging)
 - [Modes](#modes)
   * [Included modes](#included-modes)
   * [Defining custom modes](#defining-custom-modes)
