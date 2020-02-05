@@ -1,5 +1,6 @@
 {
   "name": "mineflayer-dashboard",
+  "description": "A dashboard layout for single mineflayer bot.",
   "version": "1.0.0-alpha.2",
   "main": "index.js",
   "repository": "https://github.com/wvffle/mineflayer-ui.git",
@@ -8,7 +9,10 @@
   "scripts": {
     "lint": "standard",
     "fix": "standard --fix",
-    "prepublishOnly": "markdown-toc README.md -i"
+    "prepublishOnly": "markdown-toc README.md -i",
+    "changelog": "auto-changelog -p && git add CHANGELOG.md",
+    "version": "changelog",
+    "test": "exit 0"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -19,10 +23,22 @@
     "ringbufferjs": "^1.1.0",
     "split-string": "^6.1.0"
   },
-  "description": "A dashboard layout for single mineflayer bot.",
-  "private": false,
   "devDependencies": {
+    "auto-changelog": "^1.16.2",
+    "husky": "^4.2.1",
     "markdown-toc": "^1.2.0",
     "standard": "^14.3.1"
+  },
+  "private": false,
+  "auto-changelog": {
+    "template": "keepachangelog",
+    "unreleased": true,
+    "commitLimit": false
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn fix; yarn changelog",
+      "pre-push": "yarn test"
+    }
   }
 }
