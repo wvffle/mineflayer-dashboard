@@ -74,6 +74,9 @@ global.conole.log = bot.dashboard.log
 global.conole.error = bot.dashboard.log
 ```
 
+### Error logging
+All error logging is passed to the dashboard log window. That means all of the error handlers created before plugin load are no longer listened. This was a crucial step to maintain the layout of the app.
+
 ## Modes
 ### Included modes
 Dashboard comes with 2 modes:

@@ -9,8 +9,8 @@
   "scripts": {
     "lint": "standard",
     "fix": "standard --fix",
-    "prepublishOnly": "markdown-toc README.md -i",
-    "changelog": "auto-changelog -p && git add CHANGELOG.md",
+    "readme": "markdown-toc README.md -i",
+    "changelog": "auto-changelog -up && git add CHANGELOG.md",
     "version": "changelog",
     "test": "exit 0"
   },
@@ -37,7 +37,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn fix; yarn changelog",
+      "pre-commit": "yarn fix; yarn changelog; yarn readme",
       "pre-push": "yarn test"
     }
   }
