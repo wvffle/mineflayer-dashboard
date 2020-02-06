@@ -1,10 +1,11 @@
 // const unicode = require('blessed/src/unicode')
 const vm = require('vm')
 const log = require('./src/log')
-const mode = require('./lib/mode')
+const Mode = require('./lib/mode')
 const errorHandler = require('./src/error-handler')
 const inputListen = require('./src/input-manager')
 const modeManager = require('./src/mode-manager')
+const { commands, bind } = require('./src/commands')
 const { inspect } = require('util')
 
 module.exports = function (options = {}) {
@@ -14,8 +15,6 @@ module.exports = function (options = {}) {
   }
 
   return function (bot) {
-    const Mode = mode(bot)
-
     // Enable error handling
     const logError = errorHandler(bot)
 
@@ -93,7 +92,7 @@ module.exports = function (options = {}) {
       bot.dashboard._ended = true
     })
 
-    const commands = require('./src/commands')(bot)
+    bind(bot)
 
     const chatPattern = options.chatPattern ||
       (bot.chatPatterns && bot.chatPatterns.find(p => p.type === 'chat').pattern) ||
