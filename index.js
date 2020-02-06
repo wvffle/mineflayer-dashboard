@@ -8,6 +8,13 @@ const modeManager = require('./src/mode-manager')
 const { commands, bind } = require('./src/commands')
 const { inspect } = require('util')
 
+/**
+ * mineflayer-dashboard
+ * @module mineflayer-dashboard
+ * @param {Object|bot} options - Options object or mineflayer bot
+ * @param {RegExp} [options.chatPattern=/^<\w+> /] - Chat pattern
+ * @returns {Function}
+ */
 module.exports = function (options = {}) {
   // Check if user passed 'bot' as an options
   if (options._client) {
