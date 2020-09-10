@@ -25,14 +25,9 @@ input._listener = async function (ch, key) {
   }
 
   if (key.name === 'tab') {
+    const right = value.slice(cursor)
     const res = await mode.complete(value.slice(0, cursor), key.shift ? -1 : 1)
-    this.value = value.slice(0, cursor) + res
-
-    if (offset < 0) {
-      while (offset++) {
-        program._write('\x1b[1C')
-      }
-    }
+    this.value = value.slice(0, cursor) + res + right
 
     return this.screen.render()
   } else if (mode.resetCompletion()) {
