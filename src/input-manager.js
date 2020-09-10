@@ -10,6 +10,7 @@ const input = blessed.textbox({
 })
 
 let cursor = 0
+let offset = 0
 
 input._listener = async function (ch, key) {
   const value = this.value
@@ -20,6 +21,7 @@ input._listener = async function (ch, key) {
     // `direction` is 1 for right and -1 for left
     program._write(direction === -1 ? '\x1b[1D' : '\x1b[1C')
     cursor += direction
+    offset += direction
   }
 
   if (key.name === 'tab') {
@@ -34,7 +36,17 @@ input._listener = async function (ch, key) {
   switch (key.full) {
     case 'C-c':
       if (value.length) {
+        if (offset < 0) {
+          while (offset++) {
+            program._write('\x1b[1C')
+          }
+
+          this.screen.render()
+        }
+
+
         this.value = ''
+        offset = 0
         cursor = 0
       } else {
         // NOTE: run :exit command in this mode
@@ -57,6 +69,15 @@ input._listener = async function (ch, key) {
 
       await mode.interpret(this.value)
 
+      if (offset < 0) {
+        while (offset++) {
+          program._write('\x1b[1C')
+        }
+
+        this.screen.render()
+      }
+
+      offset = 0
       cursor = 0
       this.value = ''
       break
