@@ -18,4 +18,9 @@ bot.once('spawn', () => {
   bot.dashboard.commands.exit = () => {
     cp.exec(`tmux kill-session -t ${process.argv[2]}`)
   }
+
+  // Add restart command
+  bot.dashboard.commands.restart = () => {
+    cp.exec(`tmux respawn-pane -k "node tests/test.mjs ${process.argv[2]}"`)
+  }
 })
