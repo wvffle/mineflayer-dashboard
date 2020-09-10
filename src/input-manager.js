@@ -44,7 +44,6 @@ input._listener = async function (ch, key) {
           this.screen.render()
         }
 
-
         this.value = ''
         offset = 0
         cursor = 0

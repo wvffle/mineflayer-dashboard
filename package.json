@@ -39,8 +39,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn fix; yarn changelog; yarn readme",
-      "pre-push": "yarn test"
+      "pre-commit": "yarn fix; yarn changelog; yarn readme"
     }
   },
   "standard": {
