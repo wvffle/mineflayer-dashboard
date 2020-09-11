@@ -44,7 +44,34 @@ module.exports = function (options = {}) {
     })
 
     // Create REPL context
-    const context = { bot }
+    const context = {}
+    const addToContext = (obj) => {
+      for (const [key, value] of Object.entries(obj)) {
+        Object.defineProperty(context, key, {
+          configurable: false,
+          enumerable: true,
+          value
+        })
+      }
+    }
+
+    addToContext({ bot })
+    addToContext({ require, eval, parseInt, parseFloat, isNaN, isFinite })
+    addToContext({ encodeURI, encodeURIComponent, decodeURI, decodeURIComponent })
+    addToContext({ Object, Array, Buffer, Number, Function, Boolean, BigInt, Date, String, RegExp })
+    addToContext({ Error, EvalError, RangeError, ReferenceError, SyntaxError, TypeError, URIError })
+    addToContext({ Int8Array, Uint8Array, Uint8ClampedArray, Int16Array, Uint16Array, Int32Array, Uint32Array })
+    addToContext({ Float32Array, Float64Array, BigInt64Array, BigUint64Array })
+    addToContext({ Map, Set, WeakMap, WeakSet })
+    addToContext({ ArrayBuffer, SharedArrayBuffer, Atomics, DataView, JSON })
+    addToContext({ Promise })
+    addToContext({ Reflect, Proxy })
+    addToContext({ Math })
+    addToContext({ NaN, Infinity, Symbol })
+    addToContext({ setImmediate, clearImmediate })
+    addToContext({ setTimeout, clearTimeout })
+    addToContext({ setInterval, clearInterval })
+
     vm.createContext(context)
 
     // Register REPL mode
