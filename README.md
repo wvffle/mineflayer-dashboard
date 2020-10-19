@@ -17,7 +17,7 @@ A dashboard layout for single mineflayer bot.
 - [Modes](#modes)
   * [Included modes](#included-modes)
   * [Defining custom modes](#defining-custom-modes)
-    + [Example `whiper` mode](#example-whiper-mode)
+    + [Example `whisper` mode](#example-whiper-mode)
 - [Commands](#commands)
   * [Running commands](#running-commands)
   * [Available commands](#available-commands)
@@ -71,8 +71,8 @@ Logging in log window is accessible by using `bot.dashboard.log` function.
 
 **NOTE:** Please do **not** use `console.log` as it may create some unwanted artifacts. If any other dependency is using `console.log` you may try to overwrite this function by
 ```shell script
-global.conole.log = bot.dashboard.log
-global.conole.error = bot.dashboard.log
+global.console.log = bot.dashboard.log
+global.console.error = bot.dashboard.log
 ```
 
 ### Error logging
@@ -97,7 +97,7 @@ Second one is options:
   - A single completion needs to be the remainder of the completed string. For example, when I want to complete nickname `wvffle` and I hit `<tab>` with cursor posiotioned in position `wv|` then I need to return `[ 'ffle' ]`
 - `bypassDefaultCompletion` - bypass default completion system, don't cache matches.
 
-#### Example `whiper` mode
+#### Example `whisper` mode
 When in this mode, we can send messages to different players. To change the reciever simply add ` :to <user>` at the end of the message
 ```js
 let lastUser = null
