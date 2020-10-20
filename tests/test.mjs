@@ -10,7 +10,14 @@ const bot = mineflayer.createBot({
 // Load dashboard plugin
 bot.loadPlugin(dashboard)
 
+
 bot.once('spawn', () => {
+  new bot.dashboard.Mode('test---test', {
+    bg: 'blue',
+    interpreter (string) { bot.dashboard.log(string) },
+    async completer () { return [] }
+  })
+
   // Switch to the REPL mode
   bot.dashboard.commands.repl()
 

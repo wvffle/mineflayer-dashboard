@@ -17,7 +17,7 @@ A dashboard layout for single mineflayer bot.
 - [Modes](#modes)
   * [Included modes](#included-modes)
   * [Defining custom modes](#defining-custom-modes)
-    + [Example `whisper` mode](#example-whiper-mode)
+    + [Example `whisper` mode](#example-whisper-mode)
 - [Commands](#commands)
   * [Running commands](#running-commands)
   * [Available commands](#available-commands)
