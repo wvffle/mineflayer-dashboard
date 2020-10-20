@@ -138,6 +138,8 @@ input._listener = async function (ch, key) {
 }
 
 module.exports = function () {
+  input.width = '100%-'+(modeManager.mode.name.length + 2)
+  input.left = modeManager.mode.name.length + 3
   input.readInput()
   input.screen.render()
 }
