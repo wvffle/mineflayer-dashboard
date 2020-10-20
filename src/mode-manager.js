@@ -37,6 +37,7 @@ module.exports = {
     }
 
     currentMode = mode
+    modeBox.width = this.mode.decoratedName.length + 2
     modeBox.setContent(this.mode.decoratedName)
     this.mode.window.show()
   },
