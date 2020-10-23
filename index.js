@@ -3,7 +3,7 @@ const vm = require('vm')
 const log = require('./src/log')
 const Mode = require('./lib/mode')
 const errorHandler = require('./src/error-handler')
-const inputListen = require('./src/input-manager')
+const { listen: inputListen } = require('./src/input-manager')
 const modeManager = require('./src/mode-manager')
 const { commands, bind } = require('./src/commands')
 const { inspect } = require('util')
@@ -43,6 +43,8 @@ module.exports = function (options = {}) {
       chat.println(` ${message.toAnsi()}{|}{gray-fg}${new Date().toLocaleString()}{/} `)
     })
 
+    modeManager.mode = chat
+
     // Create REPL context
     const context = {}
     const addToContext = (obj) => {
@@ -75,8 +77,7 @@ module.exports = function (options = {}) {
     vm.createContext(context)
 
     // Register REPL mode
-    // eslint-disable-next-line
-    const repl = new Mode('repl', {
+    new Mode('repl', {
       bg: 'red',
       completer (string) {
         let root = context
@@ -119,8 +120,6 @@ module.exports = function (options = {}) {
         }
       }
     })
-
-    modeManager.mode = chat
 
     bot.once('end', () => {
       bot.dashboard._ended = true

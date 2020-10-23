@@ -143,7 +143,15 @@ input._listener = async function (ch, key) {
   }
 }
 
-module.exports = function () {
-  input.readInput()
-  input.screen.render()
+module.exports = {
+  listen () {
+    module.exports.update(modeManager.mode.name)
+    input.readInput()
+    input.screen.render()
+  },
+
+  update (mode) {
+    input.width = '100%-'+(mode.length + 2)
+    input.left = mode.length + 3
+  }
 }
