@@ -145,7 +145,7 @@ module.exports = function (options = {}) {
               return reject(err)
             }
 
-            resolve((matches || []).map(k => k.slice(string.length - string.lastIndexOf(' ') - 1)))
+            resolve((matches || []).map(obj => obj.match))
           }, false, false)
         })
       }
