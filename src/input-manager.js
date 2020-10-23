@@ -1,6 +1,6 @@
 const blessed = require('blessed')
-const { textBox } = require('../src/ui')
-const modeManager = require('../src/mode-manager')
+const { textBox } = require('./ui')
+const modeManager = require('./mode-manager')
 
 const input = blessed.textbox({
   parent: textBox,
@@ -11,6 +11,7 @@ const input = blessed.textbox({
 
 let cursor = 0
 let offset = 0
+let completionBase = null
 
 input._listener = async function (ch, key) {
   const value = this.value
@@ -25,9 +26,14 @@ input._listener = async function (ch, key) {
   }
 
   if (key.name === 'tab') {
+    const toComplete = value.slice(0, cursor)
+    
+    if (!toComplete.startsWith(completionBase)) completionBase = toComplete 
+    
     const right = value.slice(cursor)
-    const res = await mode.complete(value.slice(0, cursor), key.shift ? -1 : 1)
-    this.value = value.slice(0, cursor) + res + right
+    const res = await mode.complete(completionBase, key.shift ? -1 : 1)
+    this.value = res + right
+    cursor = res.length
 
     return this.screen.render()
   } else if (mode.resetCompletion()) {
