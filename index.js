@@ -144,7 +144,7 @@ module.exports = function (options = {}) {
               return reject(err)
             }
 
-            resolve((matches || []).map(obj => obj.match))
+            resolve((matches || []))
           }, false, false)
         })
       }
