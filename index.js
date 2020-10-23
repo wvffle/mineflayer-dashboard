@@ -7,6 +7,7 @@ const { listen: inputListen } = require('./src/input-manager')
 const modeManager = require('./src/mode-manager')
 const { commands, bind } = require('./src/commands')
 const { inspect } = require('util')
+const { match } = require('assert')
 
 /**
  * mineflayer-dashboard
@@ -143,8 +144,10 @@ module.exports = function (options = {}) {
             if (err) {
               return reject(err)
             }
+            if (matches == null || matches[0] == undefined) resolve([])
 
-            resolve((matches || []))
+            if (typeof matches[0].match === 'string') resolve(matches.map(obj => obj.match))
+            else resolve(matches)
           }, false, false)
         })
       }
