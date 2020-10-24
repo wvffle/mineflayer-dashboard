@@ -31,10 +31,16 @@ input._listener = async function (ch, key) {
     if (!toComplete.startsWith(completionBase)) completionBase = toComplete 
     
     const right = value.slice(cursor)
-    const res = await mode.complete(completionBase, key.shift ? -1 : 1)
-    this.value = res + right
-    cursor = res.length
-
+    try {
+      const res = await mode.complete(completionBase, key.shift ? -1 : 1)
+      this.value = res + right
+      cursor = res.length
+    } catch(err) {
+      completionBase = null
+      mode.resetCompletion()
+      console.log('err')
+      return;
+    }
     return this.screen.render()
   } else if (mode.resetCompletion()) {
     completionBase = null
