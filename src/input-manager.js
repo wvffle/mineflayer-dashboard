@@ -37,7 +37,6 @@ input._listener = async function (ch, key) {
 
     return this.screen.render()
   } else if (mode.resetCompletion()) {
-    completionBase = null
     cursor = value.length
   }
 
