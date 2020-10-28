@@ -104,6 +104,7 @@ Print line into log window
 
 ### bot.dashboard.commands
 
+Map of all commands
 ```
 {
   commandName: callback,
