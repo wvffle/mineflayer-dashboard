@@ -37,7 +37,7 @@
 
 Print line in mode window
 > `Mode.println(...args)`
-- `...lines` `...String`
+- `...lines` `...String` Line(s) to print
 
 #### Mode.resetCompletion()
 
@@ -98,8 +98,9 @@ mineflayer-dashboard add his own property to `bot`
 
 ### bot.dashboard.log()
 
+Print line into log window
 > `bot.dashboard.log(...args)`
-- `...args` `...String` Print line into log window
+- `...args` `...String` Line(s) to print
 
 ### bot.dashboard.commands
 
