@@ -35,8 +35,9 @@
 
 #### Mode.println()
 
+Print line in mode window
 > `Mode.println(...args)`
-- `...lines` `...String` Print line in mode window
+- `...lines` `...String`
 
 #### Mode.resetCompletion()
 
