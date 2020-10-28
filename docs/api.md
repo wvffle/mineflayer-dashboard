@@ -8,7 +8,7 @@
 
 #### Constructor
 
-`new bot.dashboard.Mode(name, options)`
+> `new bot.dashboard.Mode(name, options)`
 
 - `name` `String`
 - `options`
@@ -35,6 +35,7 @@
 
 #### Mode.println()
 
+> `Mode.println(...args)`
 - `...lines` `...String` Print line in mode window
 
 #### Mode.resetCompletion()
@@ -45,15 +46,68 @@
 
 **Used internally**
 `Async`
+> `Mode.interpret(string)`
 - `string` `string` String to interpret
 
 #### Mode.complete()
 
 **Used internally**
 `Async`
+> `Mode.complete(string, ?direction)`
 - `string` `string` String to complete
 - `direction` `number` Default: `1` To return the next or the previous completion (1 = next; -1 previous)
 
 ### History
 
 **Internal class**
+
+#### History.push()
+
+Push string to the history
+> `History.push(string)`
+- `string` `String`
+Returns: `Number` size of history
+
+#### History.start()
+
+Reset history position to the start
+Returns: [`History`](#History)
+
+#### History.get()
+
+Get current history element, returns `undefined` if there is no element
+Returns: `String|undefined`
+
+#### History.next()
+
+Go down the history
+> `History.next(?n)`
+- `n` `Number` Default: `1` How many steps to go down
+Returns: `String`
+
+#### History.prev()
+
+Go up the history
+> `History.prev(?n)`
+- `n` `Number` Default: `1` How many steps to go up
+
+## bot.dashboard
+
+mineflayer-dashboard add his own property to `bot`
+
+### bot.dashboard.log()
+
+> `bot.dashboard.log(...args)`
+- `...args` `...String` Print line into log window
+
+### bot.dashboard.commands
+
+```
+{
+  commandName: callback,
+  ...
+}
+```
+
+- `commandName` `String`
+- `callback` `Function` called when command is executed
