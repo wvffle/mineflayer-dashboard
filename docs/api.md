@@ -72,11 +72,13 @@ Returns: `Number` size of history
 #### History.start()
 
 Reset history position to the start
+
 Returns: [`History`](#History)
 
 #### History.get()
 
 Get current history element, returns `undefined` if there is no element
+
 Returns: `String|undefined`
 
 #### History.next()
@@ -84,6 +86,7 @@ Returns: `String|undefined`
 Go down the history
 > `History.next(?n)`
 - `n` `Number` Default: `1` How many steps to go down
+
 Returns: `String`
 
 #### History.prev()
