@@ -67,6 +67,7 @@ Affiche la ligne dans la fenêtre du mode
 Ajouter une String à l'historique
 > `History.push(string)`
 - `string` `String`
+
 Returns: `Number` taille de l'historique
 
 #### History.start()
@@ -94,6 +95,8 @@ Returns: `String`
 Remonter l'historique
 > `History.prev(?n)`
 - `n` `Number` Default: `1` Nombre d'étapes à remonter
+
+Returns: `String`
 
 ## bot.dashboard
 

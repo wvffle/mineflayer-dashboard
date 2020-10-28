@@ -67,6 +67,7 @@ Print line in mode window
 Push string to the history
 > `History.push(string)`
 - `string` `String`
+
 Returns: `Number` size of history
 
 #### History.start()
@@ -94,6 +95,8 @@ Returns: `String`
 Go up the history
 > `History.prev(?n)`
 - `n` `Number` Default: `1` How many steps to go up
+
+Returns: `String`
 
 ## bot.dashboard
 
