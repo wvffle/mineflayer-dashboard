@@ -72,11 +72,13 @@ Returns: `Number` taille de l'historique
 #### History.start()
 
 Réinitialise la position de l'historique au début
+
 Returns: [`History`](#History)
 
 #### History.get()
 
 Récupérer l'élément actuel de l'historique, retourne `undefined` si il n'y a pas d'élément
+
 Returns: `String|undefined`
 
 #### History.next()
@@ -84,6 +86,7 @@ Returns: `String|undefined`
 Décendre dans l'historique
 > `History.next(?n)`
 - `n` `Number` Par défaut: `1` Nombre d'étapes à décendre
+
 Returns: `String`
 
 #### History.prev()
