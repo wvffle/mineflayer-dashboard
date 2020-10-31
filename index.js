@@ -37,6 +37,8 @@ module.exports = function (options = {}) {
       }
     })
 
+    modeManager.add(chat)
+
     // Chat handler
     bot.on('message', message => {
       if (!bot.dashboard._chatPattern.test(message.toString())) return
@@ -77,7 +79,7 @@ module.exports = function (options = {}) {
     vm.createContext(context)
 
     // Register REPL mode
-    new Mode('repl', {
+    const repl = new Mode('repl', {
       bg: 'red',
       completer (string) {
         let root = context
@@ -121,6 +123,8 @@ module.exports = function (options = {}) {
       }
     })
 
+    modeManager.add(repl)
+
     bot.once('end', () => {
       bot.dashboard._ended = true
     })
@@ -133,6 +137,9 @@ module.exports = function (options = {}) {
 
     bot.dashboard = {
       log,
+      addMode (mode) {
+        modeManager.add(mode)
+      },
       Mode,
       commands,
       _chatPattern: chatPattern,
