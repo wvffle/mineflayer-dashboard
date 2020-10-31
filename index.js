@@ -103,7 +103,7 @@ module.exports = function (options = {}) {
         const matches = []
         for (const k in root) {
           if (!k.startsWith(key)) continue
-          matches.push(k.slice(key.length))
+          matches.push(k)
         }
 
         return matches
@@ -143,9 +143,16 @@ module.exports = function (options = {}) {
             if (err) {
               return reject(err)
             }
-            if (matches == null || matches[0] == undefined) { resolve([]) }
-            if (typeof matches[0].match === 'string') { resolve(matches.map(obj => obj.match)) }
-            else { resolve(matches) }
+
+            if (matches == null || matches.length === 0) {
+              return resolve([])
+            }
+
+            if (bot.supportFeature('tabCompleteHasAToolTip')) {
+              return resolve(matches.map(obj => obj.match))
+            }
+
+            resolve(matches)
           }, false, false)
         })
       }

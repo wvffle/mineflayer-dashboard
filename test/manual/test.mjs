@@ -1,5 +1,5 @@
 import mineflayer from 'mineflayer'
-import dashboard from '../index.js'
+import dashboard from '../../index.js'
 import cp from 'child_process'
 
 const bot = mineflayer.createBot({

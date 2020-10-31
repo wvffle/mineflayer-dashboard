@@ -40,7 +40,7 @@ module.exports = {
     modeBox.width = this.mode.decoratedName.length + 2
     modeBox.setContent(this.mode.decoratedName)
 
-    const { update: updateInput }  = require('./input-manager')
+    const { update: updateInput } = require('./input-manager')
     updateInput(mode)
 
     this.mode.window.show()
