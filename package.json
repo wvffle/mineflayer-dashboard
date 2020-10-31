@@ -12,7 +12,7 @@
     "readme": "markdown-toc README.md -i && git add README.md",
     "changelog": "auto-changelog --remote upstream -up && git add CHANGELOG.md",
     "test:manual": "test/manual/start.sh",
-    "test": "mocha"
+    "test": "mocha --exit"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -50,7 +50,9 @@
       "describe",
       "it",
       "afterEach",
-      "beforeEach"
+      "beforeEach",
+      "after",
+      "before"
     ]
   }
 }

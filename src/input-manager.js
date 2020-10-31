@@ -162,5 +162,6 @@ module.exports = {
   update (mode) {
     input.width = '100%-' + (mode.length + 2)
     input.left = mode.length + 3
-  }
+  },
+  input
 }

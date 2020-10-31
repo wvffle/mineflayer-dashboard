@@ -1,34 +1,36 @@
 const assert = require('assert')
 const mineflayer = require('mineflayer')
 const squid = require('flying-squid')
-const dashboard = require('../index')
 const { once } = require('events')
 
 let bot
-const server = squid.createMCServer({
-  port: 8666,
-  version: '1.12',
-  gameMode: 1,
-  'view-distance': 2,
-  'online-mode': false,
-  logging: false,
-  plugins: {},
-  generation: {
-    name: 'diamond_square',
-    options: { worldHeight: 80 }
-  },
-  'player-list-text': {
-    header: { text: 'Flying squid' },
-    footer: { text: 'Test server' }
-  }
+let bot2
+let server
+
+before(async () => {
+  server = squid.createMCServer({
+    port: 8666,
+    version: '1.12',
+    gameMode: 1,
+    'view-distance': 2,
+    'online-mode': false,
+    logging: false,
+    plugins: {},
+    generation: {
+      name: 'diamond_square',
+      options: { worldHeight: 80 }
+    },
+    'player-list-text': {
+      header: { text: 'Flying squid' },
+      footer: { text: 'Test server' }
+    }
+  })
+
+  await once(server, 'listening')
 })
 
-const serverStarted = once(server, 'listening')
-
 beforeEach(async () => {
-  await serverStarted
-
-  const bot2 = mineflayer.createBot({
+  bot2 = mineflayer.createBot({
     port: 8666,
     username: 'a_dummy'
   })
@@ -41,11 +43,20 @@ beforeEach(async () => {
   })
 
   await once(bot, 'spawn')
-  bot.loadPlugin(dashboard)
+
+  bot.loadPlugin(require('../index'))
 })
 
-afterEach(() => {
+afterEach(async () => {
+  const { screen } = require('../src/ui')
+  screen.destroy()
+
   bot.end()
+  await once(bot, 'end')
+
+  bot2.end()
+  await once(bot2, 'end')
+  require.cache = {}
 })
 
 describe('completion', () => {
@@ -92,4 +103,9 @@ describe('completion', () => {
       assert.deepStrictEqual(matches, ['bot.players.a_dummy'])
     })
   })
+})
+
+after(async () => {
+  server._server.close()
+  await once(server._server, 'close')
 })
