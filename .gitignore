@@ -103,8 +103,7 @@ dist
 # TernJS port file
 .tern-port
 
-# lockfiles
-yarn.lock
+# npm lockfile
 package-lock.json
 
 # Intellij stuff
