@@ -10,7 +10,6 @@ const bot = mineflayer.createBot({
 // Load dashboard plugin
 bot.loadPlugin(dashboard)
 
-
 bot.once('spawn', () => {
   new bot.dashboard.Mode('test---test', {
     bg: 'blue',
