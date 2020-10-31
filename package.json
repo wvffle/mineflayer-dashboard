@@ -48,7 +48,9 @@
     "parser": "babel-eslint",
     "globals": [
       "describe",
-      "it"
+      "it",
+      "afterEach",
+      "beforeEach"
     ]
   }
 }
