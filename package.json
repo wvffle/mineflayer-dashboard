@@ -1,7 +1,7 @@
 {
   "name": "mineflayer-dashboard",
   "description": "A dashboard layout for single mineflayer bot.",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "main": "index.js",
   "repository": "https://github.com/wvffle/mineflayer-ui.git",
   "author": "Kasper Seweryn <github@wvffle.net>",
