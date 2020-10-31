@@ -141,7 +141,7 @@ input._listener = async function (ch, key) {
   }
 
   // eslint-disable-next-line
-  if (!handled && !/^[\x00-\x08\x0b-\x0c\x0e-\x1f\x7f]$/.test(ch)) {
+  if (!handled && ch && !/^[\x00-\x08\x0b-\x0c\x0e-\x1f\x7f]$/.test(ch)) {
     this.value = value.slice(0, cursor) + ch + value.slice(cursor)
     cursor += 1
   }
