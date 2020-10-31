@@ -27,20 +27,22 @@ input._listener = async function (ch, key) {
 
   if (key.name === 'tab') {
     const toComplete = value.slice(0, cursor)
-    
-    if (!toComplete.startsWith(completionBase)) completionBase = toComplete 
-    
+
+    if (!toComplete.startsWith(completionBase)) {
+      completionBase = toComplete
+    }
+
     const right = value.slice(cursor)
     try {
       const res = await mode.complete(completionBase, key.shift ? -1 : 1)
       this.value = res + right
       cursor = res.length
-    } catch(err) {
+    } catch {
       completionBase = null
       mode.resetCompletion()
-      console.log('err')
-      return;
+      return
     }
+
     return this.screen.render()
   } else if (mode.resetCompletion()) {
     completionBase = null
@@ -158,7 +160,7 @@ module.exports = {
   },
 
   update (mode) {
-    input.width = '100%-'+(mode.length + 2)
+    input.width = '100%-' + (mode.length + 2)
     input.left = mode.length + 3
   }
 }

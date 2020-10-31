@@ -11,7 +11,8 @@
     "fix": "standard --fix",
     "readme": "markdown-toc README.md -i && git add README.md",
     "changelog": "auto-changelog -up && git add CHANGELOG.md",
-    "test": "tests/start.sh"
+    "test:manual": "test/manual/start.sh",
+    "test": "mocha"
   },
   "engines": {
     "node": ">=12.0.0"
@@ -29,6 +30,7 @@
     "husky": "^4.2.1",
     "markdown-toc": "^1.2.0",
     "mineflayer": "^2.28.1",
+    "mocha": "^8.2.0",
     "standard": "^14.3.1"
   },
   "private": false,
@@ -43,6 +45,10 @@
     }
   },
   "standard": {
-    "parser": "babel-eslint"
+    "parser": "babel-eslint",
+    "globals": [
+      "describe",
+      "it"
+    ]
   }
 }
