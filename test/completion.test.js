@@ -50,18 +50,16 @@ afterEach(() => {
 
 describe('completion', () => {
   describe('_minecraftCompleter', () => {
+    // TODO: Fails due to flying-squid#457
     it('nicknames', async () => {
       const matches = await bot.dashboard._minecraftCompleter('com')
-      // assert.deepStrictEqual(matches, [bot.username])
-      // TODO: Update when flying-squid#457 is fixed
-      assert.deepStrictEqual(matches, ['a_dummy', bot.username])
+      assert.deepStrictEqual(matches, [bot.username])
     })
 
+    // TODO: Fails due to flying-squid#457
     it('commands', async () => {
       const matches = await bot.dashboard._minecraftCompleter('/hel')
-      // assert.deepStrictEqual(matches, ['/help'])
-      // TODO: Update when flying-squid#457 is fixed
-      assert.deepStrictEqual(matches, ['/ping', '/modpe', '/version', '/bug', '/help', '/effect', '/kill'])
+      assert.deepStrictEqual(matches, ['/help'])
     })
   })
 
