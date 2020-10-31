@@ -70,11 +70,26 @@ describe('completion', () => {
       const matches = await repl._complete('bo')
       assert.deepStrictEqual(matches, ['bot'])
     })
+
     it('req|uire', async () => {
       const repl = bot.dashboard.commands.repl()
 
       const matches = await repl._complete('req')
       assert.deepStrictEqual(matches, ['require'])
+    })
+
+    it('bot.play|ers', async () => {
+      const repl = bot.dashboard.commands.repl()
+
+      const matches = await repl._complete('bot.play')
+      assert.deepStrictEqual(matches, ['bot.players', 'bot.player'])
+    })
+
+    it('bot.players.a_|dummy', async () => {
+      const repl = bot.dashboard.commands.repl()
+
+      const matches = await repl._complete('bot.players.a_')
+      assert.deepStrictEqual(matches, ['bot.players.a_dummy'])
     })
   })
 })

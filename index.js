@@ -103,7 +103,7 @@ module.exports = function (options = {}) {
         const matches = []
         for (const k in root) {
           if (!k.startsWith(key)) continue
-          matches.push(k)
+          matches.push(leftSide + k.slice(key.length))
         }
 
         return matches
