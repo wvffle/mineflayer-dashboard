@@ -10,7 +10,7 @@
     "lint": "standard",
     "fix": "standard --fix",
     "readme": "markdown-toc README.md -i && git add README.md",
-    "changelog": "auto-changelog -up && git add CHANGELOG.md",
+    "changelog": "auto-changelog --remote upstream -up && git add CHANGELOG.md",
     "test:manual": "test/manual/start.sh",
     "test": "mocha"
   },
