@@ -128,6 +128,8 @@ const whisper = new bot.dashboard.Mode('whisper', {
   }
 })
 
+bot.dashboard.addMode(whisper)
+
 bot.on('whisper', (username, message) => {
   // Log a notification if not in whisper mode
   if (bot.dashboard.mode !== whisper) {
