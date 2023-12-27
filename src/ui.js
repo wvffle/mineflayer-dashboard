@@ -2,7 +2,8 @@ const blessed = require('blessed')
 
 const screen = blessed.screen({
   terminal: 'xterm-256color',
-  dockBorders: true
+  dockBorders: true,
+  fullUnicode: true
 })
 
 const logBox = blessed.box({
@@ -12,7 +13,11 @@ const logBox = blessed.box({
   height: '100%-2',
   border: 'line',
   scrollable: true,
-  scrollbar: { bg: 'blue' },
+  scrollbar: {
+    style: {
+      bg: 'blue'
+    }
+  },
   mouse: true,
   tags: true
 })

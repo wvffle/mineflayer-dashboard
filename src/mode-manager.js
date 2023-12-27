@@ -17,12 +17,18 @@ const emitter = new EventEmitter()
 module.exports = {
   modes,
 
+  /**
+   * @param {{ name: string | number; }} mode
+   */
   add (mode) {
     modes[mode.name] = mode
     emitter.emit('new', mode)
   },
 
   // NOTE: Internally we need only 'on' function
+  /**
+   * @param {[string | symbol, (...args: any[]) => void]} args
+   */
   on (...args) {
     emitter.on(...args)
   },
